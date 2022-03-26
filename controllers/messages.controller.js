@@ -1,21 +1,5 @@
-
-let messages = [
-    {
-        id:0,
-        sender:'Ahmed',
-        resever:'Salah',
-    },
-    {
-        id:1,
-        sender:'Hosam',
-        resever:'Osama',
-    },
-    {
-        id:2,
-        sender:'Elain',
-        resever:'Taha',
-    },
-]
+const model = require('../models/message.model')
+let messages = model.messages
 function getMessages ( request , response) {
     response.status(200).json(messages)
 }
