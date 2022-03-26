@@ -1,23 +1,8 @@
 
 
-const friends = [
-    {
-        id : 0,
-        name: "abdallah",
-        age: 22
-    },
-    {
-        id : 1,
-        name: "mohammed",
-        age: 33
-    },
-    {
-        id : 2,
-        name: "ali",
-        age: 44
-    },
-]
-
+    const model = require('../models/friend.model')
+    const friends = model.friends
+    
  function addNewFriend (request , response) {
     let friendName = request.body.name
     if (!friendName){

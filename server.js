@@ -1,12 +1,8 @@
 
-const { request } = require('express');
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const friendController = require('./controllers/friends.controller')
-const friends = friendController.friends
-const messagesController = require('./controllers/messages.controller')
-const messages = messagesController.messages
+
 app.use( (req , res , next) => {
     const start = Date.now();
     next()
@@ -16,16 +12,14 @@ app.use( (req , res , next) => {
 app.use(express.json())
 
 
-app.get('/' , ( req , res) => {
-    res.send({id:0 , name:"mohammed"});
-});
 
-app.get('/friends' , friendController.getAllFriends)
-app.get('/friends/:friendId' ,friendController.getFriend)
-app.post('/friends' , (friendController.addNewFriend))
-app.get('/messages' , messagesController.getMessages)
-app.get('/messages/:messageId' , messagesController.getMessage)
-app.post('/messages' , messagesController.addNewMessage)
+
+let messageRoute = require('./routes/messages.route')
+let friendsRoute = require('./routes/friends.route')
+app.use("/friends" , friendsRoute)
+app.use("/messages" , messageRoute)
+
+
 app.listen(PORT , () => {
     console.log(`listning to port ${PORT}`);
 })
