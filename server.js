@@ -7,7 +7,7 @@ app.use( (req , res , next) => {
     const start = Date.now();
     next()
     let time = Date.now() - start;
-    console.log(`url : ${req.url} method : ${req.method} time : ${time}`)
+    console.log(`url : ${req.baseUrl}/${req.url} method : ${req.method} time : ${time}`)
 } )
 app.use(express.json())
 
@@ -22,4 +22,8 @@ app.use("/messages" , messageRoute)
 
 app.listen(PORT , () => {
     console.log(`listning to port ${PORT}`);
-})
+}
+)
+
+
+
